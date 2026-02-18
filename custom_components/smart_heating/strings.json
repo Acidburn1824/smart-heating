@@ -1,0 +1,108 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Zone configuration",
+        "description": "Configure the heating zone to monitor",
+        "data": {
+          "zone_name": "Zone name",
+          "sensor_temp": "Indoor temperature sensor",
+          "sensor_ext": "Outdoor temperature sensor",
+          "climate_entity": "Climate entity (VTherm, Netatmo, etc.)"
+        }
+      },
+      "schedule": {
+        "title": "Schedule & Weather",
+        "description": "Optional: schedule sensor and weather entity for forecasts",
+        "data": {
+          "schedule_entity": "Schedule setpoint sensor (optional)",
+          "weather_entity": "Weather entity for forecasts (optional)"
+        }
+      },
+      "params": {
+        "title": "Parameters",
+        "description": "Fine-tune the anticipation algorithm",
+        "data": {
+          "safety_margin": "Safety margin",
+          "warmup_ignore_min": "Warmup ignore (pellet stove: 12, radiator: 0)",
+          "anti_short_cycle": "Enable anti short-cycle protection",
+          "min_off_time_sec": "Minimum off time between cycles",
+          "min_sessions": "Minimum sessions before anticipation"
+        }
+      },
+      "llm": {
+        "title": "AI Provider",
+        "description": "Choose an AI provider to optimize margin adjustments based on weather and thermal history. Optional - pure algorithm works without AI.",
+        "data": {
+          "llm_provider": "AI Provider"
+        }
+      },
+      "llm_cloud": {
+        "title": "{provider} Configuration",
+        "description": "Enter your API key and select a model",
+        "data": {
+          "llm_api_key": "API Key",
+          "llm_model": "Model"
+        }
+      },
+      "llm_ollama": {
+        "title": "Ollama Configuration",
+        "description": "Configure local Ollama instance",
+        "data": {
+          "llm_url": "Ollama URL",
+          "llm_model": "Model"
+        }
+      },
+      "llm_ha": {
+        "title": "HA Conversation",
+        "description": "Use a conversation agent configured in Home Assistant",
+        "data": {
+          "agent_id": "Conversation agent"
+        }
+      }
+    },
+    "error": {
+      "api_key_required": "API key is required"
+    },
+    "abort": {
+      "already_configured": "This zone is already configured"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Smart Heating Options",
+        "data": {
+          "safety_margin": "Safety margin",
+          "warmup_ignore_min": "Warmup ignore minutes",
+          "min_sessions": "Minimum sessions"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "state": { "name": "State" },
+      "sessions": { "name": "Sessions" },
+      "min_per_deg": { "name": "Minutes per °C" },
+      "speed": { "name": "Heating speed" },
+      "anticipation": { "name": "Anticipation" },
+      "llm_advice": { "name": "AI Advice" },
+      "effective_margin": { "name": "Effective margin" },
+      "schedule": { "name": "Next schedule" },
+      "feedback": { "name": "Performance" }
+    },
+    "binary_sensor": {
+      "anticipating": { "name": "Anticipation active" },
+      "anti_cycle": { "name": "Anti-cycle active" }
+    },
+    "switch": {
+      "enabled": { "name": "Enabled" },
+      "llm_enabled": { "name": "AI enabled" }
+    },
+    "number": {
+      "margin": { "name": "Safety margin" },
+      "warmup": { "name": "Warmup time" }
+    }
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Configuration de la zone",
+        "description": "Configurez la zone de chauffage à surveiller",
+        "data": {
+          "zone_name": "Nom de la zone",
+          "sensor_temp": "Capteur température intérieure",
+          "sensor_ext": "Capteur température extérieure",
+          "climate_entity": "Entité climate (VTherm, Netatmo, etc.)"
+        }
+      },
+      "schedule": {
+        "title": "Planning & Météo",
+        "description": "Optionnel : sensor de planning et entité météo pour les prévisions",
+        "data": {
+          "schedule_entity": "Sensor de consigne planning (optionnel)",
+          "weather_entity": "Entité météo pour les prévisions (optionnel)"
+        }
+      },
+      "params": {
+        "title": "Paramètres",
+        "description": "Ajustez finement l'algorithme d'anticipation",
+        "data": {
+          "safety_margin": "Marge de sécurité",
+          "warmup_ignore_min": "Temps de montée en puissance à ignorer (poêle: 12, radiateur: 0)",
+          "anti_short_cycle": "Activer la protection anti-cycles courts",
+          "min_off_time_sec": "Temps minimum d'arrêt entre les cycles",
+          "min_sessions": "Sessions minimum avant anticipation"
+        }
+      },
+      "llm": {
+        "title": "Fournisseur IA",
+        "description": "Choisissez un fournisseur IA pour optimiser les ajustements de marge en fonction de la météo et de l'historique thermique. Optionnel — l'algorithme pur fonctionne sans IA.",
+        "data": {
+          "llm_provider": "Fournisseur IA"
+        }
+      },
+      "llm_cloud": {
+        "title": "Configuration {provider}",
+        "description": "Entrez votre clé API et sélectionnez un modèle",
+        "data": {
+          "llm_api_key": "Clé API",
+          "llm_model": "Modèle"
+        }
+      },
+      "llm_ollama": {
+        "title": "Configuration Ollama",
+        "description": "Configurez votre instance Ollama locale",
+        "data": {
+          "llm_url": "URL Ollama",
+          "llm_model": "Modèle"
+        }
+      },
+      "llm_ha": {
+        "title": "HA Conversation",
+        "description": "Utilisez un agent de conversation configuré dans Home Assistant",
+        "data": {
+          "agent_id": "Agent de conversation"
+        }
+      }
+    },
+    "error": {
+      "api_key_required": "La clé API est requise"
+    },
+    "abort": {
+      "already_configured": "Cette zone est déjà configurée"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Options Smart Heating",
+        "data": {
+          "safety_margin": "Marge de sécurité",
+          "warmup_ignore_min": "Temps de montée en puissance (min)",
+          "min_sessions": "Sessions minimum"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "state": { "name": "État" },
+      "sessions": { "name": "Sessions" },
+      "min_per_deg": { "name": "Minutes par °C" },
+      "speed": { "name": "Vitesse de montée" },
+      "anticipation": { "name": "Anticipation" },
+      "llm_advice": { "name": "Conseil IA" },
+      "effective_margin": { "name": "Marge effective" },
+      "schedule": { "name": "Prochain créneau" },
+      "feedback": { "name": "Performance" }
+    },
+    "binary_sensor": {
+      "anticipating": { "name": "Anticipation active" },
+      "anti_cycle": { "name": "Anti-cycle actif" }
+    },
+    "switch": {
+      "enabled": { "name": "Activé" },
+      "llm_enabled": { "name": "IA activée" }
+    },
+    "number": {
+      "margin": { "name": "Marge de sécurité" },
+      "warmup": { "name": "Temps montée en puissance" }
+    }
+  }
+}

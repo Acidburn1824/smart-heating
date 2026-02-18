@@ -1,0 +1,34 @@
+force_llm_call:
+  name: Forcer un appel IA
+  description: Force un appel au fournisseur IA configuré pour recalculer la marge
+  target:
+    entity:
+      domain: sensor
+      integration: smart_heating
+  fields:
+    context:
+      name: Contexte
+      description: "Contexte de l'appel (morning ou evening)"
+      required: false
+      default: "morning"
+      selector:
+        select:
+          options:
+            - "morning"
+            - "evening"
+
+reset_sessions:
+  name: Réinitialiser les sessions
+  description: Supprime toutes les sessions d'apprentissage pour cette zone
+  target:
+    entity:
+      domain: sensor
+      integration: smart_heating
+
+recalculate:
+  name: Recalculer l'anticipation
+  description: Force un recalcul immédiat de l'anticipation
+  target:
+    entity:
+      domain: sensor
+      integration: smart_heating
